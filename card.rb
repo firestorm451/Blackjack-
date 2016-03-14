@@ -1,5 +1,5 @@
+# defines playing card class
 class Card
-
   attr_accessor :face, :suit, :value
 
   def initialize(face, suit)
@@ -24,19 +24,11 @@ class Card
     end
   end
 
-  def >(card)
-    self.value > card.value
+  def >(other)
+    self.value > other.value
   end
 
-   def face_values
-     {
-    :J => 10,
-    :Q => 10,
-    :K => 10,
-    :A => 11
-  }
+  def face_values
+    { J: 10, Q: 10, K: 10, A: 11 }
   end
-
-
 end
-# deck = Card.new
