@@ -44,7 +44,7 @@ class Blackjack
 
 
     def dealer_turn
-      unless blackjack(dealer) || busted_yo(dealer) || blackjack(player)
+      unless blackjack(dealer) || busted_yo(dealer) || blackjack(player) || hand_value(player) > 21
         until hand_value(dealer) >= 16
           hit_me_dealer
           if blackjack(dealer)
@@ -53,6 +53,7 @@ class Blackjack
             puts "Dealer busted, you win!"
           end
         end
+        display_score
       end
     end
 
@@ -87,6 +88,10 @@ class Blackjack
     def starting_score
       puts "You have #{player.map{|card| "#{card.face} #{card.suit}" }.join(" and ")}, for a total of #{player_score}"
       puts "The dealer is showing #{dealer.first.face} of #{dealer[0].suit}"
+    end
+
+    def display_score
+      puts "Dealer has #{dealer.map{|card| "#{card.face} #{card.suit}" }.join(" and ")}, for a total of #{dealer_score}"
     end
 
     def player_score
