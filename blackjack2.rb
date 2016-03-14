@@ -33,10 +33,8 @@ class Blackjack
             puts "You now have #{player.map{|card| "#{card.face} #{card.suit}" }.join(" and ")}, for a total of #{player_score}"
             if busted_yo(player)
               puts "Wamp, wamp, you busted"
-              #play_again
             elsif blackjack(player)
               puts "Blackjack, you are a winner!"
-              #play_again
             else
               player_turn
             end
@@ -46,15 +44,13 @@ class Blackjack
 
 
     def dealer_turn
-      unless blackjack(dealer) || busted_yo(dealer)
+      unless blackjack(dealer) || busted_yo(dealer) || blackjack(player)
         until hand_value(dealer) >= 16
           hit_me_dealer
           if blackjack(dealer)
             puts "Blackjack for the dealer, dealer wins!"
-            #play_again
-          else busted_yo(dealer)
+          elsif busted_yo(dealer)
             puts "Dealer busted, you win!"
-            #play_again
           end
         end
       end
