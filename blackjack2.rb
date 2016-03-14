@@ -59,11 +59,11 @@ class Blackjack
     def ending
       if six_win(player)
         puts "OMGROFLCOPTER you get an auto win, because that's pretty freakin rare!"
-      elsif hand_value(player) > hand_value(dealer)
+      elsif hand_value(player) > hand_value(dealer) && hand_value(player) <= 21
         puts "You win!"
-      elsif hand_value(player) < hand_value(dealer)
+      elsif hand_value(player) < hand_value(dealer) && hand_value(dealer) <= 21
         puts "You lose, and the robots are coming for you!"
-      else
+      elsif hand_value(player) == hand_value(dealer)
         if player.length > dealer.length
           puts "You win based on length, heh."
         elsif player.length < dealer.length
