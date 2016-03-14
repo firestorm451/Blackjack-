@@ -93,8 +93,6 @@ class Blackjack
     end
 
     def starting_score
-      player_score = player.map{|card| card.value}.inject(:+)
-      dealer_score = dealer.map{|card| card.value}.inject(:+)
       puts "You have #{player.map{|card| "#{card.face} #{card.suit}" }.join(" and ")}, for a total of #{player_score}"
       puts "The dealer is showing #{dealer.first.face} of #{dealer[0].suit}"
     end
