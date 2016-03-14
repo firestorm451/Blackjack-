@@ -4,10 +4,6 @@ class Blackjack
 
   attr_accessor :player, :dealer, :deck
 
-  def initialize
-    self.deck = Deck.new
-  end
-
     def play
       p "Time to play, play like your life depends on it, because it just might!"
       STDIN.gets.chomp
@@ -21,7 +17,7 @@ class Blackjack
     end
 
     def draw_cards
-      @deck = Deck.new
+      self.deck = Deck.new
       self.dealer = deck.cards.shift(2)
       self.player = deck.cards.shift(2)
       starting_score
@@ -37,10 +33,10 @@ class Blackjack
             puts "You now have #{player.map{|card| "#{card.face} #{card.suit}" }.join(" and ")}, for a total of #{player_score}"
             if busted_yo(player)
               puts "Wamp, wamp, you busted"
-              play_again
+              #play_again
             elsif blackjack(player)
               puts "Blackjack, you are a winner!"
-              play_again
+              #play_again
             else
               player_turn
             end
@@ -55,10 +51,10 @@ class Blackjack
           hit_me_dealer
           if blackjack(dealer)
             puts "Blackjack for the dealer, dealer wins!"
-            play_again
+            #play_again
           else busted_yo(dealer)
             puts "Dealer busted, you win!"
-            play_again
+            #play_again
           end
         end
       end
@@ -86,7 +82,7 @@ class Blackjack
       puts "Would you like to play again [y] or [n]?"
       answer = STDIN.gets.chomp
       if answer == "y"
-        Game.new.play
+        play
       else
         puts "Thanks for playing!"
       end
